@@ -15,8 +15,22 @@ datasource db {
 
 
 model User{
-  id    Int       @id @default(autoincrement())
-  email String    @unique
-  name  String?   
+  id                  Int             @id @default(autoincrement())
+  email               String          @unique
+  name                String?         
+  token               String?         
+  password            String            
+  createdAt           DateTime        @default(now())
+  UpdatedAt           DateTime        @updatedAt
+  role                UserRole        @default(USER)
+}
 
+enum Authtype{
+  Gooogle 
+  Github
+}
+
+enum UserRole{
+  ADMIN
+  USER
 }
